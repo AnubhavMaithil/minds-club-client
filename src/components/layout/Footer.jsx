@@ -11,11 +11,10 @@ const Footer = () => {
 
   return (
     <footer className="w-full h-fit flex flex-col gap-5 bg-[#F9F7F7] px-10 py-10">
-      {/* <div className="flex flex-col gap-10 md:flex-row justify-between items-start py-5 md:py-20"> */}
-      <div className="grid grid-cols-2 md:grid-cols-6 gap-5 md:gap-10 items-start py-5 md:py-20">
+      <div className="flex flex-col gap-10 md:flex-row justify-between items-start py-5 md:py-20">
 
         {/* MINDS CLUB LOGO */}
-        <div className="col-span-2 md:col-span-2 flex flex-col items-start justify-center">
+        <div className="flex flex-col items-center justify-center">
           <img src={logo} alt="Minds Club Logo" className="w-44" />
           <p className="text-sm font-medium">
             A space to grow, together!
