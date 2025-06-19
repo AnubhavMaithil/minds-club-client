@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        font-family: "Satoshi sans-serif";
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        /* @apply bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-200 overflow-x-hidden; */
+        line-height: 1.5;
+    }
+}
+
+@layer components {
+    .container-custom {
+        @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    }
+
+    .btn {
+        @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors 
+    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none 
+    disabled:opacity-50 h-10 px-4 py-2;
+    }
+
+    .btn-primary {
+        @apply bg-primary-600 text-white hover:bg-primary-700 focus-visible:ring-primary-500;
+    }
+
+    .btn-secondary {
+        @apply bg-secondary-600 text-white hover:bg-secondary-700 focus-visible:ring-secondary-500;
+    }
+
+    .btn-outline {
+        @apply border border-gray-300 bg-transparent hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-800;
+    }
+
+    .input {
+        @apply flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm 
+    placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+    disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-50
+    dark:placeholder-gray-400 dark:focus:ring-primary-500;
+    }
+
+    .card {
+        @apply rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900;
+    }
+}
+
+/* Custom animations */
+.fade-enter {
+    opacity: 0;
+}
+.fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms;
+}
+.fade-exit {
+    opacity: 1;
+}
+.fade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms;
+}
+
+/**
+* @license
+*
+* Font Family: Satoshi
+* Designed by: Deni Anggara
+* URL: https://www.fontshare.com/fonts/satoshi
+* Â© 2025 Indian Type Foundry
+*
+* Satoshi Light 
+* Satoshi LightItalic 
+* Satoshi Regular 
+* Satoshi Italic 
+* Satoshi Medium 
+* Satoshi MediumItalic 
+* Satoshi Bold 
+* Satoshi BoldItalic 
+* Satoshi Black 
+* Satoshi BlackItalic 
+* Satoshi Variable (Variable font)
+* Satoshi VariableItalic (Variable font)
+
+*
+*/
+@font-face {
+    font-family: "Satoshi";
+    src: url("../assets/fonts/Satoshi-Light.woff2") format("woff2");
+    font-weight: 300;
+    font-display: swap;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Satoshi";
+    src: url("../assets/fonts/Satoshi-LightItalic.woff2") format("woff2");
+    font-weight: 300;
+    font-display: swap;
+    font-style: italic;
+}
+@font-face {
+    font-family: "Satoshi";
+    src: url("../assets/fonts/Satoshi-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Satoshi";
+    src: url("../assets/fonts/Satoshi-Italic.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
+    font-style: italic;
+}
+@font-face {
+    font-family: "Satoshi";
+    src: url("../assets/fonts/Satoshi-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-display: swap;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Satoshi";
+    src: url("../assets/fonts/Satoshi-MediumItalic.woff2") format("woff2");
+    font-weight: 500;
+    font-display: swap;
+    font-style: italic;
+}
+@font-face {
+    font-family: "Satoshi";
+    src: url("../assets/fonts/Satoshi-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-display: swap;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Satoshi";
+    src: url("../assets/fonts/Satoshi-BoldItalic.woff2") format("woff2");
+    font-weight: 700;
+    font-display: swap;
+    font-style: italic;
+}
+@font-face {
+    font-family: "Satoshi";
+    src: url("../assets/fonts/Satoshi-Black.woff2") format("woff2");
+    font-weight: 900;
+    font-display: swap;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Satoshi";
+    src: url("../assets/fonts/Satoshi-BlackItalic.woff2") format("woff2");
+    font-weight: 900;
+    font-display: swap;
+    font-style: italic;
+}
