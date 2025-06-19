@@ -8,15 +8,12 @@ import menuIcon from "@assets/images/menuIcon.svg"
 import travelMeetGrow from "@assets/images/travelMeetGrow.svg"
 import scrollCreativity from "@assets/images/scrollCreativity.svg"
 import explore from "@assets/images/_DSC8286.png"
-import FlowingImage from "@/components/FlowingImage";
-import ScrollImageSequence from "@/components/ScrollImageSequence";
 import { motion, useInView } from "framer-motion";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import FloatingImagesScrollEffect from "@/components/PhotosFliyngOnScrolling";
 import Button from "@/components/Button";
 import { useRef } from "react";
-import { opacity, slideUp } from "@/utils/animation";
+import { slideUp } from "@/utils/animation";
 
 const Home = () => {
 
