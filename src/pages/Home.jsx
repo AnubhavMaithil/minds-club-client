@@ -14,83 +14,76 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import Button from "@/components/Button";
 import { useRef } from "react";
 import { slideUp } from "@/utils/animation";
+import { FaCalendar, FaMapPin, FaUsers } from "react-icons/fa6";
+import { GoArrowRight } from "react-icons/go";
+
 
 const Home = () => {
 
-  const imageSet1 = [
-    "https://ik.imagekit.io/anubhavmaithil/MindsClub/img.png?updatedAt=1747574937783",
-    "https://ik.imagekit.io/anubhavmaithil/MindsClub/homepageMain.png?updatedAt=1747570334069",
-    "https://ik.imagekit.io/anubhavmaithil/MindsClub/img.png?updatedAt=1747574937783",
-    "https://ik.imagekit.io/anubhavmaithil/MindsClub/homepageMain.png?updatedAt=1747570334069",
-    "https://ik.imagekit.io/anubhavmaithil/MindsClub/img.png?updatedAt=1747574937783",
-    "https://ik.imagekit.io/anubhavmaithil/MindsClub/homepageMain.png?updatedAt=1747570334069",
+  const workshops = [
+    {
+      title: "Goa Edition - Branding & Beyond",
+      description: "Master the art of thinking, shooting, and designing like a pro. 4-day on-field branding workshop in Goa.",
+      image: 'https://plus.unsplash.com/premium_photo-1677283511146-52fa442feb2f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      new: true,
+      mode: "On-field",
+      date: "15th - 18th June 2025",
+      location: "South Goa",
+      limited: true,
+      skills: ["Photography", "Branding", "Design", "Collaboration"],
+      mentor: {
+        name: "Rajeev Mehta",
+        image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/TheRajeevMehta.png?updatedAt=1747771099391"
+      }
+    },
+    {
+      title: "Goa Edition - Branding & Beyond",
+      description: "Master the art of thinking, shooting, and designing like a pro. 4-day on-field branding workshop in Goa.",
+      image: 'https://plus.unsplash.com/premium_photo-1677283511146-52fa442feb2f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      new: true,
+      mode: "Online",
+      date: "15th - 18th June 2025",
+      location: "South Goa",
+      limited: true,
+      skills: ["Photography", "Branding", "Design", "Collaboration"],
+      mentor: {
+        name: "Rajeev Mehta",
+        image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/TheRajeevMehta.png?updatedAt=1747771099391"
+      }
+    },
+    {
+      title: "Goa Edition - Branding & Beyond",
+      description: "Master the art of thinking, shooting, and designing like a pro. 4-day on-field branding workshop in Goa.",
+      image: 'https://plus.unsplash.com/premium_photo-1677283511146-52fa442feb2f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      new: true,
+      mode: "On-field",
+      date: "15th - 18th June 2025",
+      location: "South Goa",
+      limited: true,
+      skills: ["Photography", "Branding", "Design", "Collaboration"],
+      mentor: {
+        name: "Rajeev Mehta",
+        image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/TheRajeevMehta.png?updatedAt=1747771099391"
+      }
+    },
+    {
+      title: "Goa Edition - Branding & Beyond",
+      description: "Master the art of thinking, shooting, and designing like a pro. 4-day on-field branding workshop in Goa.",
+      image: 'https://plus.unsplash.com/premium_photo-1677283511146-52fa442feb2f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      new: true,
+      mode: "Online",
+      date: "15th - 18th June 2025",
+      location: "South Goa",
+      limited: true,
+      skills: ["Photography", "Branding", "Design", "Collaboration"],
+      mentor: {
+        name: "Rajeev Mehta",
+        image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/TheRajeevMehta.png?updatedAt=1747771099391"
+      }
+    },
+
   ];
-  const imageSet2 = [
-    "https://ik.imagekit.io/anubhavmaithil/MindsClub/img.png?updatedAt=1747574937783",
-    "https://ik.imagekit.io/anubhavmaithil/MindsClub/homepageMain.png?updatedAt=1747570334069",
-    "https://ik.imagekit.io/anubhavmaithil/MindsClub/img.png?updatedAt=1747574937783",
-    "https://ik.imagekit.io/anubhavmaithil/MindsClub/homepageMain.png?updatedAt=1747570334069",
-    "https://ik.imagekit.io/anubhavmaithil/MindsClub/img.png?updatedAt=1747574937783",
-    "https://ik.imagekit.io/anubhavmaithil/MindsClub/homepageMain.png?updatedAt=1747570334069",
-  ];
 
-  const prevWorkshops = [
-    {
-      title: "Workshop 1",
-      description: "Description 1",
-      image: 'https://ik.imagekit.io/anubhavmaithil/MindsClub/PrevWork2.png?updatedAt=1747683885835'
-    },
-    {
-      title: "Workshop 2",
-      description: "Description 2",
-      image: 'https://ik.imagekit.io/anubhavmaithil/MindsClub/PrevWork1.png?updatedAt=1747683885816'
-    },
-    {
-      title: "Workshop 3",
-      description: "Description 3",
-      image: 'https://ik.imagekit.io/anubhavmaithil/MindsClub/PrevWork3.png?updatedAt=1747683885890'
-    },
-    {
-      title: "Workshop 1",
-      description: "Description 1",
-      image: 'https://ik.imagekit.io/anubhavmaithil/MindsClub/PrevWork2.png?updatedAt=1747683885835'
-    },
-    {
-      title: "Workshop 2",
-      description: "Description 2",
-      image: 'https://ik.imagekit.io/anubhavmaithil/MindsClub/PrevWork1.png?updatedAt=1747683885816'
-    },
-    {
-      title: "Workshop 3",
-      description: "Description 3",
-      image: 'https://ik.imagekit.io/anubhavmaithil/MindsClub/PrevWork3.png?updatedAt=1747683885890'
-    },
-  ];
-
-
-  const reviews = [
-    {
-      name: "Raj Kashyap",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/raj.png"
-    },
-    {
-      name: "Prashant Kulshresths",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/prashant.png"
-    },
-    {
-      name: "Ashwani Singh",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/ashwani.png"
-    },
-    {
-      name: "Ramneetpal Kaur",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/ramneetpal.png"
-    },
-
-  ]
 
   const phrase =
     "Explore new places to unlock new perspectives. Every journey with Minds Club is a step into untapped inspiration — where culture, creativity, and curiosity collide. Connect with passionate minds and collaborators who challenge and elevate you.";
@@ -107,14 +100,14 @@ const Home = () => {
         {/* Hero Section */}
         <section className="h-screen overflow-hidden">
           <div
-            className="w-full px-2 md:px-40 relative z-20 flex flex-col items-start justify-between h-full"
+            className="w-full px-2 md:px-60 relative z-20 flex flex-col items-start justify-between h-full"
           >
             <div className="w-full h-full flex flex-col gap-3 md:gap-5 items-center md:items-start justify-center">
               <h1 className="text-white text-2xl md:text-5xl text-center md:text-left font-semibold">Where Creative Minds <br /> Travel, Meet & Grow.</h1>
               <Button title="Start your journey" className={"capitalize font-semibold"} onClick={() => { }} />
             </div>
 
-            <div className="absolute bottom-5 right-40 bg-white/30 backdrop-blur-md rounded-[40px] px-4 py-7 flex-col md:flex-row items-center gap-5 hidden md:flex">
+            <div className="absolute bottom-5 right-40 bg-white/30 backdrop-blur-md rounded-xl px-4 py-7 flex-col md:flex-row items-center gap-5 hidden md:flex">
               {/* Designers */}
               <div className="flex items-center gap-[-20px] md:gap-[-40px]">
                 <div className="relative z-10">
@@ -143,15 +136,14 @@ const Home = () => {
         {/* Hero Section End */}
 
         {/* Content Section */}
-        <section className="relative">
+        {/* <section className="relative">
           <div className="w-full h-full py-28 px-5 md:px-16 flex flex-col gap-20">
             <div
               ref={description}
               className="flex justify-center"
             >
               <div className="relative flex gap-1">
-                {/* Animated Heading */}
-                <p className="w-full md:w-2/3 text-xl md:text-4xl leading-[1.3] flex flex-wrap gap-1">
+                <p className="w-full md:w-3/4 text-xl md:text-4xl leading-[1.5] flex flex-wrap gap-1">
                   {phrase.split(" ").map((word, index) => (
                     <span key={index} className="relative overflow-hidden inline-flex mr-[3px]">
                       <motion.span
@@ -169,7 +161,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
         {/* Content Section End */}
 
         {/* Explore The One */}
@@ -186,65 +178,161 @@ const Home = () => {
             </div>
           </div>
         </section> */}
-        {/* Explore The One End */}
+        {/* /* Explore The One End */}
 
         {/* Workshops */}
-        {/* <section className="min-h-screen w-full overflow-hidden">
-          <div className="w-full h-full py-14 px-5 md:px-16 flex flex-col gap-5">
-            <h1 className="text-5xl lg:text-8xl w-4/5 md:w-3/5 md:mx-auto leading-none font-medium md:text-center">Beyond Learning, It&apos;s Experience</h1>
-            <hr className="border-2 border-gray-500 rounded-md" />
+        <section className="min-h-screen w-full overflow-hidden rounded-md py-10 md:py-28 px-5 md:px-16 flex flex-col gap-10">
+          <div className="flex flex-col items-start justify-start gap-3 h-full">
+            <h1 className="uppercase">
+              Workshops
+            </h1>
+            <h1 className="capitalize text-2xl md:text-4xl leading-relaxed font-bold">
+              Explore your creativity <br />
+              through workshops.
+            </h1>
+          </div>
 
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
-              <div className="flex gap-2 items-center justify-center w-fit">
-                <h1 className="text-xl">Upcoming work shops </h1>
-                <motion.div
-                  animate={{
-                    x: [0, 5, 0],
-                    y: [0, 5, 0],
-                  }}
-                  transition={{
-                    duration: 1,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                >
-                  <LuArrowDownRight className="text-2xl font-bold" />
-                </motion.div>
-              </div>
-              <div className="hidden md:flex gap-2 items-center justify-center w-fit bg-black text-white rounded-full cursor-pointer px-5 py-2">
-                <p>View All</p>
-                <motion.div
-                  animate={{
-                    x: [0, 5, 0],
-                  }}
-                  transition={{
-                    duration: 1,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                >
-                  <IoArrowForward />
-                </motion.div>
-              </div>
-            </div>
-
-            <div className="flex flex-col md:flex-row items-start md:items-start justify-between gap-10 overflow-y-scroll scrollbar-hide">
-              {prevWorkshops.map((workshop, index) => (
-                <div key={index} className="flex-shrink-0">
-                  <div className="flex flex-col items-start justify-start gap-2">
-                    <img src={workshop.image} alt={workshop.title} className="w-96 object-cover" />
-                    <h1 className="text-black text-2xl font-medium">{workshop.title}</h1>
-                    <div className="hidden md:flex gap-2 items-center justify-center w-fit bg-black text-white rounded-full cursor-pointer px-5 py-2">
-                      <p className="text-sm">View Details</p>
-                      <LuArrowDownRight />
-                    </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {workshops.map((workshop, index) => (
+              <div key={index} className="rounded-2xl border border-gray-200 overflow-hidden shadow-sm p-5">
+                <div className="relative rounded-lg overflow-hidden">
+                  <img src={workshop.image} alt={workshop.title} className="w-full h-74 object-cover" />
+                  <div className="absolute top-2 left-2 flex gap-2">
+                    {workshop.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="text-xs border border-white text-white px-2 py-0.5 rounded-full"
+                      >
+                        {skill.toLowerCase()}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="absolute bottom-0 right-0 bg-white pt-3 pl-3 pb-2 pr-2 rounded-tl-xl">
+                    <img
+                      src={workshop.mentor.image}
+                      alt={workshop.mentor.name}
+                      className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-white"
+                    />
                   </div>
                 </div>
-              ))}
-            </div>
+                <div className="pt-4 flex flex-col items-start gap-2">
+                  <div className="flex items-center gap-2 mb-1 border rounded-full w-fit">
+                    {workshop.new && <span className="ml-2 text-sm text-gray-800">New</span>}
+                    <span
+                      className={`text-sm px-3 py-0.5 rounded-full font-medium ${workshop.mode === "Online"
+                        ? "bg-yellow-100 text-yellow-700"
+                        : "bg-green-100 text-green-700"
+                        }`}
+                    >
+                      {workshop.mode}
+                    </span>
+                  </div>
+                  <h3 className="text-lg md:text-2xl font-bold mb-1">{workshop.title}</h3>
+                  <p className="w-2/3 text-xs md:text-sm text-gray-600 mb-3">{workshop.description}</p>
+
+
+                  <div className="flex gap-5 items-center mt-5">
+                    <div className="flex items-center gap-2 text-sm font-medium text-black mb-1">
+                      <FaCalendar size={14} />
+                      <span>{workshop.date}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm font-medium text-black mb-1">
+                      <FaMapPin size={14} />
+                      <span>{workshop.location}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm font-medium text-black">
+                      <FaUsers size={14} />
+                      <span>{workshop.limited ? "Limited Seats" : "Open Seats"}</span>
+                    </div>
+                  </div>
+
+                  <div className="w-full flex justify-between items-center">
+                    <Button title={"Book your spot"} className={"bg-black text-white "} />
+                    <GoArrowRight size={28} />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+        {/* Workshops End */}
+
+
+        {/* Shop */}
+        {/* <section className="min-h-screen w-full overflow-hidden rounded-md py-10 md:py-28 px-5 md:px-16 flex flex-col gap-10">
+          <div className="flex flex-col items-start justify-start gap-3 h-full">
+            <h1 className="uppercase">
+              Workshops
+            </h1>
+            <h1 className="capitalize text-2xl md:text-4xl leading-relaxed font-bold">
+              Explore your creativity <br />
+              through workshops.
+            </h1>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {workshops.map((workshop, index) => (
+              <div key={index} className="rounded-2xl border border-gray-200 overflow-hidden shadow-sm p-5">
+                <div className="relative rounded-lg overflow-hidden">
+                  <img src={workshop.image} alt={workshop.title} className="w-full h-74 object-cover" />
+                  <div className="absolute top-2 left-2 flex gap-2">
+                    {workshop.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="text-xs border border-white text-white px-2 py-0.5 rounded-full"
+                      >
+                        {skill.toLowerCase()}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="absolute bottom-0 right-0 bg-white pt-3 pl-3 pb-2 pr-2 rounded-tl-xl">
+                    <img
+                      src={workshop.mentor.image}
+                      alt={workshop.mentor.name}
+                      className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-white"
+                    />
+                  </div>
+                </div>
+                <div className="pt-4 flex flex-col items-start gap-2">
+                  <div className="flex items-center gap-2 mb-1 border rounded-full w-fit">
+                    {workshop.new && <span className="ml-2 text-sm text-gray-800">New</span>}
+                    <span
+                      className={`text-sm px-3 py-0.5 rounded-full font-medium ${workshop.mode === "Online"
+                        ? "bg-yellow-100 text-yellow-700"
+                        : "bg-green-100 text-green-700"
+                        }`}
+                    >
+                      {workshop.mode}
+                    </span>
+                  </div>
+                  <h3 className="text-lg md:text-2xl font-bold mb-1">{workshop.title}</h3>
+                  <p className="w-2/3 text-xs md:text-sm text-gray-600 mb-3">{workshop.description}</p>
+
+
+                  <div className="flex gap-5 items-center mt-5">
+                    <div className="flex items-center gap-2 text-sm font-medium text-black mb-1">
+                      <FaCalendar size={14} />
+                      <span>{workshop.date}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm font-medium text-black mb-1">
+                      <FaMapPin size={14} />
+                      <span>{workshop.location}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm font-medium text-black">
+                      <FaUsers size={14} />
+                      <span>{workshop.limited ? "Limited Seats" : "Open Seats"}</span>
+                    </div>
+                  </div>
+
+                  <div className="w-full flex justify-between items-center">
+                    <Button title={"Book your spot"} className={"bg-black text-white "} />
+                    <GoArrowRight size={28} />
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </section> */}
-        {/* Workshops End */}
+        {/* Shop End */}
 
 
         {/* The ONE Group */}

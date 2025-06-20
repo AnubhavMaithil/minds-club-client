@@ -34,7 +34,7 @@ const Header = () => {
 
   return (
     <header
-      className={`z-50 transition-all duration-300 ease-in-out ${isScrolled ? "top-0 px-0 md:px-0 fixed" : "top-10 px-5 md:px-40 fixed"
+      className={`z-50 transition-all duration-300 ease-in-out ${isScrolled ? "top-0 px-0 md:px-0 fixed" : "top-10 px-5 md:px-60 fixed"
         } w-full`}
     >
       <nav className={`px-5 py-2 md:py-3 shadow-md  ${isScrolled ? "rounded-none bg-black/50 backdrop-blur-md border-none" : "rounded-full bg-white/20 backdrop-blur-md border border-white/20"} overflow-hidden transition-all duration-300 ease-in-out`}>
