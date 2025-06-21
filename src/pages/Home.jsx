@@ -12,9 +12,9 @@ import { motion, useInView } from "framer-motion";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import Button from "@/components/Button";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { slideUp } from "@/utils/animation";
-import { FaCalendar, FaMapPin, FaUsers } from "react-icons/fa6";
+import { FaCalendar, FaChevronLeft, FaChevronRight, FaMapPin, FaUsers } from "react-icons/fa6";
 import { GoArrowRight } from "react-icons/go";
 import { MdOutlineDateRange } from "react-icons/md";
 
@@ -52,9 +52,64 @@ const Home = () => {
         image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/TheRajeevMehta.png?updatedAt=1747771099391"
       }
     },
-
   ];
 
+  const products = [
+    {
+      id: 1,
+      title: "Electomania",
+      description: "Sun Hat for Men and Women",
+      image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/hat.png",
+      colors: ["#8B4513", "#CD853F", "#F5DEB3"]
+    },
+    {
+      id: 2,
+      title: "Electomania",
+      description: "Sun Hat for Men and Women",
+      image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/hat.png",
+      colors: ["#8B4513", "#CD853F", "#F5DEB3"]
+    },
+    {
+      id: 3,
+      title: "Electomania",
+      description: "Sun Hat for Men and Women",
+      image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/hat.png",
+      colors: ["#8B4513", "#CD853F", "#F5DEB3"]
+    },
+    // {
+    //   id: 4,
+    //   title: "Electomania",
+    //   description: "Sun Hat for Men and Women",
+    //   image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/hat.png"
+    // },
+    // {
+    //   id: 5,
+    //   title: "Electomania",
+    //   description: "Sun Hat for Men and Women",
+    //   image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/hat.png"
+    // },
+    // {
+    //   id: 6,
+    //   title: "Electomania",
+    //   description: "Sun Hat for Men and Women",
+    //   image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/hat.png"
+    // },
+
+  ]
+
+  const scrollRef = useRef(null);
+
+  // const scrollLeft = () => {
+  //   if (scrollRef.current) {
+  //     scrollRef.current.scrollBy({ left: -300, behavior: "smooth" });
+  //   }
+  // };
+
+  // const scrollRight = () => {
+  //   if (scrollRef.current) {
+  //     scrollRef.current.scrollBy({ left: 300, behavior: "smooth" });
+  //   }
+  // };
 
   const phrase =
     "Explore new places to unlock new perspectives. Every journey with Minds Club is a step into untapped inspiration — where culture, creativity, and curiosity collide. Connect with passionate minds and collaborators who challenge and elevate you.";
@@ -157,7 +212,7 @@ const Home = () => {
             <h1 className="uppercase">
               Workshops
             </h1>
-            <h1 className="capitalize text-2xl md:text-4xl leading-relaxed font-bold">
+            <h1 className="text-2xl md:text-4xl leading-relaxed font-bold">
               Explore your creativity <br />
               through workshops.
             </h1>
@@ -232,102 +287,98 @@ const Home = () => {
 
 
         {/* Shop */}
-        {/* <section className="min-h-screen w-full overflow-hidden rounded-md py-10 md:py-28 px-5 md:px-16 flex flex-col gap-10">
+        <section className="min-h-screen w-full overflow-hidden rounded-md py-10 md:py-28 px-5 md:px-16 flex flex-col gap-10">
           <div className="flex flex-col items-start justify-start gap-3 h-full">
             <h1 className="uppercase">
-              Workshops
+              Shop
             </h1>
-            <h1 className="capitalize text-2xl md:text-4xl leading-relaxed font-bold">
-              Explore your creativity <br />
-              through workshops.
+            <h1 className="text-2xl md:text-4xl leading-relaxed font-bold">
+              Essentials for every <br />
+              journey.
             </h1>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {workshops.map((workshop, index) => (
-              <div key={index} className="rounded-2xl border border-gray-200 overflow-hidden shadow-sm p-5">
-                <div className="relative rounded-lg overflow-hidden">
-                  <img src={workshop.image} alt={workshop.title} className="w-full h-74 object-cover" />
-                  <div className="absolute top-2 left-2 flex gap-2">
-                    {workshop.skills.map((skill) => (
+
+          <div className="relative">
+            {/* Scroll Buttons */}
+            {/* <button
+              onClick={scrollLeft}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white p-2 shadow-md rounded-full"
+            >
+              <FaChevronLeft />
+            </button> */}
+            {/* <button
+              onClick={scrollRight}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white p-2 shadow-md rounded-full"
+            >
+              <FaChevronRight />
+            </button> */}
+
+            {/* Scroll Container */}
+            <div
+              ref={scrollRef}
+              className="flex flex-col md:flex-row gap-16 overflow-x-auto scroll-smooth py-4 scrollbar-hide"
+            >
+              {products.map((product, index) => (
+                <div
+                  key={index}
+                  className="w-full rounded-4xl overflow-hidden shadow-sm border border-gray-200 h-[450px] relative"
+                >
+                  <div
+                    className="absolute inset-0 bg-cover bg-top"
+                    style={{
+                      backgroundImage: `url(${product.image})`,
+                      backgroundSize: "150%",
+                    }}
+                  />
+                  <div className="absolute inset-0 flex items-start justify-end p-5">
+                    {product.colors.map((color, index) => (
                       <span
-                        key={skill}
-                        className="text-xs border border-white text-white px-2 py-0.5 rounded-full"
-                      >
-                        {skill.toLowerCase()}
-                      </span>
+                        key={index}
+                        className="inline-block w-7 h-7 rounded-full cursor-pointer"
+                        style={{
+                          backgroundColor: color,
+                          marginLeft: index === 0 ? 0 : -11,
+                          zIndex: product.colors.length - index, // first one highest
+                          position: 'relative',
+                          border: index === 0 ? '2px solid white' : 'none',
+                        }}
+                      />
                     ))}
                   </div>
-                  <div className="absolute bottom-0 right-0 bg-white pt-3 pl-3 pb-2 pr-2 rounded-tl-xl">
-                    <img
-                      src={workshop.mentor.image}
-                      alt={workshop.mentor.name}
-                      className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-white"
-                    />
+                  <div className="relative z-10 p-5 text-white h-full flex flex-col justify-end">
+                    <h2 className="text-lg md:text-xl font-semibold mb-2">{product.title}</h2>
+                    <p className="text-sm font-medium mb-4">{product.description}</p>
+                    <Button title="Add to Cart" className="text-black flex items-center justify-between font-medium" icon={<FaChevronRight />} />
                   </div>
                 </div>
-                <div className="pt-4 flex flex-col items-start gap-2">
-                  <div className="flex items-center gap-2 mb-1 border rounded-full w-fit">
-                    {workshop.new && <span className="ml-2 text-sm text-gray-800">New</span>}
-                    <span
-                      className={`text-sm px-3 py-0.5 rounded-full font-medium ${workshop.mode === "Online"
-                        ? "bg-yellow-100 text-yellow-700"
-                        : "bg-green-100 text-green-700"
-                        }`}
-                    >
-                      {workshop.mode}
-                    </span>
-                  </div>
-                  <h3 className="text-lg md:text-2xl font-bold mb-1">{workshop.title}</h3>
-                  <p className="w-2/3 text-xs md:text-sm text-gray-600 mb-3">{workshop.description}</p>
-
-
-                  <div className="flex gap-5 items-center mt-5">
-                    <div className="flex items-center gap-2 text-sm font-medium text-black mb-1">
-                      <FaCalendar size={14} />
-                      <span>{workshop.date}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm font-medium text-black mb-1">
-                      <FaMapPin size={14} />
-                      <span>{workshop.location}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm font-medium text-black">
-                      <FaUsers size={14} />
-                      <span>{workshop.limited ? "Limited Seats" : "Open Seats"}</span>
-                    </div>
-                  </div>
-
-                  <div className="w-full flex justify-between items-center">
-                    <Button title={"Book your spot"} className={"bg-black text-white "} />
-                    <GoArrowRight size={28} />
-                  </div>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </section> */}
+        </section>
         {/* Shop End */}
 
 
         {/* The ONE Group */}
-        {/* <div className="w-full py-14 px-5 md:px-16 flex flex-col gap-5">
-          <h1 className="w-full md:w-1/2 text-2xl font-medium">Minds-Club isn&apos;t just about learning-it&apos;s about experiencing creativity firsthand. Step into an immersive space where nature, design, and collaboration redefine education.</h1>
+        <section className="min-h-screen w-full overflow-hidden rounded-md py-10 md:py-28 px-5 md:px-16 flex flex-col gap-10">
+          <div className="flex flex-col items-start justify-start gap-3 h-full">
+            <h1 className="uppercase">
+              The One
+            </h1>
+            <h1 className="text-2xl md:text-4xl leading-relaxed font-bold">
+              Community base creative <br />
+              agency
+            </h1>
+          </div>
 
-          <motion.img
-            src="https://ik.imagekit.io/anubhavmaithil/MindsClub/DSC08968.png?updatedAt=1747687763830"
-            alt="Subtle Animated"
-            initial={{ y: 20, scale: 0.98 }}
-            animate={{
-              y: [20, 15, 20],
-              scale: [0.98, 1, 0.98],
-            }}
-            transition={{
-              duration: 3,
-              ease: "easeInOut",
-              repeat: Infinity,
-            }}
-            className="w-full object-cover rounded-md"
-          />
-        </div> */}
+          <div className="relative">
+            <div className="rounded-4xl overflow-hidden shadow-sm border border-gray-200 aspect-video relative">
+              <img src="https://ik.imagekit.io/anubhavmaithil/MindsClub/TheOne.png" alt="" />
+              <div className="absolute inset-0 bg-black/20 w-full h-full flex items-center justify-center hover:bg-black/50 transition-all duration-300 ease-in-out">
+                <Button title="Explore The One" className="text-black font-medium text-base" />
+              </div>
+            </div>
+          </div>
+        </section>
         {/* The ONE Group End */}
 
         {/* Designer Section */}
