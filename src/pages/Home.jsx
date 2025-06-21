@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FiArrowDownRight, FiArrowRightCircle } from "react-icons/fi";
-import { IoArrowForward } from "react-icons/io5";
-import { LuArrowDownRight } from "react-icons/lu";
+import { IoArrowForward, IoLocationOutline } from "react-icons/io5";
+import { LuArrowDownRight, LuUsers } from "react-icons/lu";
 
 
 import menuIcon from "@assets/images/menuIcon.svg"
@@ -16,6 +16,7 @@ import { useRef } from "react";
 import { slideUp } from "@/utils/animation";
 import { FaCalendar, FaMapPin, FaUsers } from "react-icons/fa6";
 import { GoArrowRight } from "react-icons/go";
+import { MdOutlineDateRange } from "react-icons/md";
 
 
 const Home = () => {
@@ -24,7 +25,7 @@ const Home = () => {
     {
       title: "Goa Edition - Branding & Beyond",
       description: "Master the art of thinking, shooting, and designing like a pro. 4-day on-field branding workshop in Goa.",
-      image: 'https://plus.unsplash.com/premium_photo-1677283511146-52fa442feb2f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      image: 'https://ik.imagekit.io/anubhavmaithil/MindsClub/Goa.png',
       new: true,
       mode: "On-field",
       date: "15th - 18th June 2025",
@@ -39,37 +40,7 @@ const Home = () => {
     {
       title: "Goa Edition - Branding & Beyond",
       description: "Master the art of thinking, shooting, and designing like a pro. 4-day on-field branding workshop in Goa.",
-      image: 'https://plus.unsplash.com/premium_photo-1677283511146-52fa442feb2f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      new: true,
-      mode: "Online",
-      date: "15th - 18th June 2025",
-      location: "South Goa",
-      limited: true,
-      skills: ["Photography", "Branding", "Design", "Collaboration"],
-      mentor: {
-        name: "Rajeev Mehta",
-        image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/TheRajeevMehta.png?updatedAt=1747771099391"
-      }
-    },
-    {
-      title: "Goa Edition - Branding & Beyond",
-      description: "Master the art of thinking, shooting, and designing like a pro. 4-day on-field branding workshop in Goa.",
-      image: 'https://plus.unsplash.com/premium_photo-1677283511146-52fa442feb2f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      new: true,
-      mode: "On-field",
-      date: "15th - 18th June 2025",
-      location: "South Goa",
-      limited: true,
-      skills: ["Photography", "Branding", "Design", "Collaboration"],
-      mentor: {
-        name: "Rajeev Mehta",
-        image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/TheRajeevMehta.png?updatedAt=1747771099391"
-      }
-    },
-    {
-      title: "Goa Edition - Branding & Beyond",
-      description: "Master the art of thinking, shooting, and designing like a pro. 4-day on-field branding workshop in Goa.",
-      image: 'https://plus.unsplash.com/premium_photo-1677283511146-52fa442feb2f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      image: 'https://ik.imagekit.io/anubhavmaithil/MindsClub/pottery.png',
       new: true,
       mode: "Online",
       date: "15th - 18th June 2025",
@@ -194,7 +165,7 @@ const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {workshops.map((workshop, index) => (
-              <div key={index} className="rounded-4xl border border-gray-200 overflow-hidden shadow-sm p-5">
+              <div key={index} className="rounded-4xl border border-gray-400 overflow-hidden shadow-sm p-5">
                 <div className="relative rounded-3xl overflow-hidden">
                   <div className="w-full h-96">
                     <img src={workshop.image} alt={workshop.title} className="w-full h-full object-cover" />
@@ -209,7 +180,7 @@ const Home = () => {
                       </span>
                     ))}
                   </div>
-                  <div className="absolute bottom-0 right-0 bg-white pt-4 pl-4 pb-0 pr-0 rounded-tl-xl">
+                  <div className="absolute bottom-0 right-0 bg-white pt-4 pl-4 pb-0 pr-0 rounded-tl-3xl">
                     <img
                       src={workshop.mentor.image}
                       alt={workshop.mentor.name}
@@ -235,15 +206,15 @@ const Home = () => {
 
                   <div className="flex gap-5 items-center mt-5">
                     <div className="flex items-center gap-2 text-sm font-medium text-black mb-1">
-                      <FaCalendar size={14} />
+                      <MdOutlineDateRange />
                       <span>{workshop.date}</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm font-medium text-black mb-1">
-                      <FaMapPin size={14} />
+                      <IoLocationOutline />
                       <span>{workshop.location}</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm font-medium text-black">
-                      <FaUsers size={14} />
+                      <LuUsers />
                       <span>{workshop.limited ? "Limited Seats" : "Open Seats"}</span>
                     </div>
                   </div>
