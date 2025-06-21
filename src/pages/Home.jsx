@@ -31,7 +31,7 @@ const Home = () => {
       date: "15th - 18th June 2025",
       location: "South Goa",
       limited: true,
-      skills: ["Photography", "Branding", "Design", "Collaboration"],
+      skills: ["Photography", "Branding", "Design"],
       mentor: {
         name: "Rajeev Mehta",
         image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/TheRajeevMehta.png?updatedAt=1747771099391"
@@ -46,7 +46,7 @@ const Home = () => {
       date: "15th - 18th June 2025",
       location: "South Goa",
       limited: true,
-      skills: ["Photography", "Branding", "Design", "Collaboration"],
+      skills: ["Photography", "Branding", "Design"],
       mentor: {
         name: "Rajeev Mehta",
         image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/TheRajeevMehta.png?updatedAt=1747771099391"
@@ -107,16 +107,16 @@ const Home = () => {
         {/* Hero Section End */}
 
         {/* Content Section */}
-        {/* <section className="relative">
+        <section className="relative">
           <div className="w-full h-full py-28 px-5 md:px-16 flex flex-col gap-20">
             <div
               ref={description}
               className="flex justify-center"
             >
               <div className="relative flex gap-1">
-                <p className="w-full md:w-3/4 text-xl md:text-4xl leading-[1.5] flex flex-wrap gap-1">
+                <p className="w-full md:w-3/4 text-xl md:text-3xl leading-[1.5] flex flex-wrap gap-1">
                   {phrase.split(" ").map((word, index) => (
-                    <span key={index} className="relative overflow-hidden inline-flex mr-[3px]">
+                    <span key={index} className="h-fit relative overflow-hidden inline-flex mr-[3px]">
                       <motion.span
                         variants={slideUp}
                         custom={index}
@@ -132,7 +132,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </section> */}
+        </section>
         {/* Content Section End */}
 
         {/* Explore The One */}
@@ -166,9 +166,9 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {workshops.map((workshop, index) => (
               <div key={index} className="rounded-4xl border border-gray-400 overflow-hidden shadow-sm p-5">
-                <div className="relative rounded-3xl overflow-hidden">
+                <div className="relative rounded-3xl">
                   <div className="w-full h-96">
-                    <img src={workshop.image} alt={workshop.title} className="w-full h-full object-cover" />
+                    <img src={workshop.image} alt={workshop.title} className="w-full h-full object-cover rounded-3xl" />
                   </div>
                   <div className="absolute top-5 left-5 flex gap-2">
                     {workshop.skills.map((skill) => (
@@ -180,15 +180,15 @@ const Home = () => {
                       </span>
                     ))}
                   </div>
-                  <div className="absolute bottom-0 right-0 bg-white pt-4 pl-4 pb-0 pr-0 rounded-tl-3xl">
+                  <div className="absolute bottom-0 right-0 bg-white pt-4 pl-4 pb-0 pr-0 rounded-tl-3xl scale-105">
                     <img
                       src={workshop.mentor.image}
                       alt={workshop.mentor.name}
-                      className="w-16 h-16 md:w-20 md:h-20 rounded-full border border-white"
+                      className="w-16 h-16 md:w-20 md:h-20 rounded-full"
                     />
                   </div>
                 </div>
-                <div className="pt-4 flex flex-col items-start gap-2">
+                <div className="pt-4 flex flex-col items-start gap-3 md:gap-2">
                   <div className="flex items-center gap-2 mb-1 border border-black rounded-full w-fit">
                     {workshop.new && <span className="ml-2 text-xs text-black">New</span>}
                     <span
@@ -200,20 +200,20 @@ const Home = () => {
                       {workshop.mode}
                     </span>
                   </div>
-                  <h3 className="text-lg md:text-2xl font-bold mb-1">{workshop.title}</h3>
-                  <p className="w-2/3 text-xs md:text-sm text-gray-600 mb-3">{workshop.description}</p>
+                  <h3 className="text-xl md:text-2xl font-bold mb-1">{workshop.title}</h3>
+                  <p className="md:w-2/3 text-sm text-gray-600 mb-3">{workshop.description}</p>
 
 
-                  <div className="flex gap-5 items-center mt-5">
-                    <div className="flex items-center gap-2 text-sm font-medium text-black mb-1">
+                  <div className="flexmd:gap-5 items-center mt-5">
+                    <div className="flex items-center gap-2 md:gap-2 text-sm font-medium text-black mb-1">
                       <MdOutlineDateRange />
                       <span>{workshop.date}</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm font-medium text-black mb-1">
+                    <div className="flex items-center gap-2 md:gap-2 text-sm font-medium text-black mb-1">
                       <IoLocationOutline />
                       <span>{workshop.location}</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm font-medium text-black">
+                    <div className="flex items-center gap-2 md:gap-2 text-sm font-medium text-black">
                       <LuUsers />
                       <span>{workshop.limited ? "Limited Seats" : "Open Seats"}</span>
                     </div>
