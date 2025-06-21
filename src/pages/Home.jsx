@@ -194,34 +194,36 @@ const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {workshops.map((workshop, index) => (
-              <div key={index} className="rounded-2xl border border-gray-200 overflow-hidden shadow-sm p-5">
-                <div className="relative rounded-lg overflow-hidden">
-                  <img src={workshop.image} alt={workshop.title} className="w-full h-74 object-cover" />
-                  <div className="absolute top-2 left-2 flex gap-2">
+              <div key={index} className="rounded-4xl border border-gray-200 overflow-hidden shadow-sm p-5">
+                <div className="relative rounded-3xl overflow-hidden">
+                  <div className="w-full h-96">
+                    <img src={workshop.image} alt={workshop.title} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="absolute top-5 left-5 flex gap-2">
                     {workshop.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="text-xs border border-white text-white px-2 py-0.5 rounded-full"
+                        className="text-sm border border-white text-white px-2 py-0.5 rounded-full"
                       >
                         {skill.toLowerCase()}
                       </span>
                     ))}
                   </div>
-                  <div className="absolute bottom-0 right-0 bg-white pt-3 pl-3 pb-2 pr-2 rounded-tl-xl">
+                  <div className="absolute bottom-0 right-0 bg-white pt-4 pl-4 pb-0 pr-0 rounded-tl-xl">
                     <img
                       src={workshop.mentor.image}
                       alt={workshop.mentor.name}
-                      className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-white"
+                      className="w-16 h-16 md:w-20 md:h-20 rounded-full border border-white"
                     />
                   </div>
                 </div>
                 <div className="pt-4 flex flex-col items-start gap-2">
-                  <div className="flex items-center gap-2 mb-1 border rounded-full w-fit">
-                    {workshop.new && <span className="ml-2 text-sm text-gray-800">New</span>}
+                  <div className="flex items-center gap-2 mb-1 border border-black rounded-full w-fit">
+                    {workshop.new && <span className="ml-2 text-xs text-black">New</span>}
                     <span
-                      className={`text-sm px-3 py-0.5 rounded-full font-medium ${workshop.mode === "Online"
-                        ? "bg-yellow-100 text-yellow-700"
-                        : "bg-green-100 text-green-700"
+                      className={`text-sm scale-110 px-3 py-0.5 rounded-full font-medium ${workshop.mode === "Online"
+                        ? "bg-gradient-to-r from-[#D4FC79] to-[#96E6A1] text-black"
+                        : "bg-gradient-to-r from-[#FF8C21] to-[#FAC74D] text-white"
                         }`}
                     >
                       {workshop.mode}
