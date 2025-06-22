@@ -128,8 +128,8 @@ const Home = () => {
         <section className="h-screen overflow-hidden">
           <MaxWidthWrapper className="h-full py-10">
             <div className="h-full relative z-20 flex flex-col items-start justify-between">
-              <div className="w-full h-full flex flex-col gap-3 md:gap-5 items-center md:items-start justify-center">
-                <h1 className="text-white text-2xl md:text-5xl text-center md:text-left font-semibold">
+              <div className="w-full h-full flex flex-col gap-3 md:gap-5 items-center md:items-start justify-center md:px-40 -mt-20">
+                <h1 className="text-white text-2xl md:text-5xl text-center md:text-left font-semibold md:leading-[60px]">
                   Where Creative Minds <br /> Travel, Meet & Grow.
                 </h1>
                 <Button title="Start your journey" className={"capitalize font-semibold"} onClick={() => { }} />
@@ -165,7 +165,7 @@ const Home = () => {
 
         {/* Content */}
         <section className="relative">
-          <MaxWidthWrapper className="py-28">
+          <MaxWidthWrapper className="pt-28">
             <div className="flex flex-col gap-20">
               <div ref={description} className="flex justify-center">
                 <div className="relative flex gap-1">

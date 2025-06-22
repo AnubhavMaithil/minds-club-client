@@ -41,10 +41,10 @@ const Header = () => {
         <div className="container w-full max-w-[1440px] mx-auto flex justify-between items-center">
           <div className="text-white text-lg font-bold">
             <Link to="/" className="block md:hidden">
-              <img src={logo} alt="Logo" className="w-12" />
+              <img src={logo} alt="Logo" className="w-16" />
             </Link>
             <Link to="/" className="hidden md:block">
-              <img src={logoLable} alt="Logo Label" className="w-32" />
+              <img src={logoLable} alt="Logo Label" className="w-36" />
             </Link>
           </div>
           <div className="md:hidden text-white text-3xl">
