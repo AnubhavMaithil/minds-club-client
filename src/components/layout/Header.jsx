@@ -38,7 +38,7 @@ const Header = () => {
         } w-full`}
     >
       <nav className={`px-5 py-2 md:py-3 shadow-md  ${isScrolled ? "rounded-none bg-black/50 backdrop-blur-md border-none" : "rounded-full bg-white/20 backdrop-blur-md border border-white/20"} overflow-hidden transition-all duration-300 ease-in-out`}>
-        <div className="container mx-auto flex justify-between items-center">
+        <div className="container w-full max-w-[1440px] mx-auto flex justify-between items-center">
           <div className="text-white text-lg font-bold">
             <Link to="/" className="block md:hidden">
               <img src={logo} alt="Logo" className="w-12" />
