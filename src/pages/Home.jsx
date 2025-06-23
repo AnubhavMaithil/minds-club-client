@@ -128,7 +128,7 @@ const Home = () => {
         <section className="h-screen overflow-hidden">
           <MaxWidthWrapper className="h-full py-10">
             <div className="h-full relative z-20 flex flex-col items-start justify-between">
-              <div className="w-full h-full flex flex-col gap-3 md:gap-5 items-center md:items-start justify-center md:px-40 lg:px-0 -mt-20">
+              <div className="w-full h-full flex flex-col gap-3 md:gap-5 items-center md:items-start justify-center md:px-40 -mt-20">
                 <h1 className="text-white text-2xl md:text-5xl text-center md:text-left font-semibold md:leading-[60px]">
                   Where Creative Minds <br /> Travel, Meet & Grow.
                 </h1>
@@ -206,36 +206,10 @@ const Home = () => {
                   <div key={index} className="rounded-4xl border border-gray-400 overflow-hidden shadow-sm p-5">
                     <div className="relative rounded-3xl">
                       <div className="w-full h-96 overflow-hidden rounded-3xl relative">
-                        {/* <svg
-                          width="611"
-                          height="399"
-                          viewBox="0 0 611 399"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="w-full h-auto"
-                        >
-                          <defs>
-                            <clipPath id="customClip">
-                              <path
-                                d="M611 267C611 283.569 597.569 297 581 297H539C522.431 297 509 310.431 509 327V369C509 385.569 495.569 399 479 399H30C13.4315 399 0 385.569 0 369V30C0 13.4315 13.4315 0 30 0H581C597.569 0 611 13.4315 611 30V267Z"
-                              />
-                            </clipPath>
-                          </defs>
-
-                          <g clipPath="url(#customClip)">
-                            <image
-                              href={workshop.image}
-                              width="611"
-                              height="399"
-                              preserveAspectRatio="xMidYMid slice"
-                              className="w-full h-full object-cover"
-                            />
-                          </g>
-                        </svg> */}
                         <svg
                           width="620"
-                          height="422"
-                          viewBox="0 0 620 422"
+                          height="405"
+                          viewBox="0 0 620 405"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
                           className="w-full h-auto"
@@ -243,20 +217,20 @@ const Home = () => {
                           <defs>
                             <clipPath id="pathClip">
                               <path
-                                d="M620 270C620 286.569 606.569 300 590 300H530C513.431 300 500 313.431 500 330V375C500 391.569 486.569 405 470 405H30C13.4315 405 0 391.569 0 375V30C0 13.4315 13.4315 0 30 0H590C606.569 0 620 13.4315 620 30V270Z"
+                                d="M620 267C620 283.569 606.569 297 590 297H543C526.431 297 513 310.431 513 327V375C513 391.569 499.569 405 483 405H30C13.4315 405 0 391.569 0 375V30C0 13.4315 13.4315 0 30 0H590C606.569 0 620 13.4315 620 30V267Z"
                               />
                             </clipPath>
                             <clipPath id="circleClip">
-                              <circle cx="570" cy="372" r="50" />
+                              <circle cx="577.5" cy="362.5" r="42.5" />
                             </clipPath>
                           </defs>
 
                           {/* Main path image */}
                           <g clipPath="url(#pathClip)">
                             <image
-                              href={workshop.image}
+                              href={workshop.image}  // main image URL
                               width="620"
-                              height="422"
+                              height="405"
                               preserveAspectRatio="xMidYMid slice"
                             />
                           </g>
@@ -264,11 +238,11 @@ const Home = () => {
                           {/* Circle image */}
                           <g clipPath="url(#circleClip)">
                             <image
-                              href={workshop.mentor.image}
-                              x="520"
-                              y="322"
-                              width="100"
-                              height="100"
+                              href={workshop.mentor.image}  // circle image URL
+                              x="535"
+                              y="320"
+                              width="85"
+                              height="85"
                               preserveAspectRatio="xMidYMid slice"
                             />
                           </g>
