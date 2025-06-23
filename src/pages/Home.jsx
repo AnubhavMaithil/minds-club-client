@@ -206,18 +206,73 @@ const Home = () => {
                   <div key={index} className="rounded-4xl border border-gray-400 overflow-hidden shadow-sm p-5">
                     <div className="relative rounded-3xl">
                       <div className="w-full h-96 overflow-hidden rounded-3xl relative">
-                        <div
-                          className="w-full h-full"
-                          style={{
-                            clipPath: "polygon(0% 0%, 100% 0%, 100% 80%, 85% 80%, 85% 100%, 0% 100%)"
-                          }}
+                        {/* <svg
+                          width="611"
+                          height="399"
+                          viewBox="0 0 611 399"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-full h-auto"
                         >
-                          <img
-                            src={workshop.image}
-                            alt={workshop.title}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
+                          <defs>
+                            <clipPath id="customClip">
+                              <path
+                                d="M611 267C611 283.569 597.569 297 581 297H539C522.431 297 509 310.431 509 327V369C509 385.569 495.569 399 479 399H30C13.4315 399 0 385.569 0 369V30C0 13.4315 13.4315 0 30 0H581C597.569 0 611 13.4315 611 30V267Z"
+                              />
+                            </clipPath>
+                          </defs>
+
+                          <g clipPath="url(#customClip)">
+                            <image
+                              href={workshop.image}
+                              width="611"
+                              height="399"
+                              preserveAspectRatio="xMidYMid slice"
+                              className="w-full h-full object-cover"
+                            />
+                          </g>
+                        </svg> */}
+                        <svg
+                          width="620"
+                          height="422"
+                          viewBox="0 0 620 422"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-full h-auto"
+                        >
+                          <defs>
+                            <clipPath id="pathClip">
+                              <path
+                                d="M620 270C620 286.569 606.569 300 590 300H530C513.431 300 500 313.431 500 330V375C500 391.569 486.569 405 470 405H30C13.4315 405 0 391.569 0 375V30C0 13.4315 13.4315 0 30 0H590C606.569 0 620 13.4315 620 30V270Z"
+                              />
+                            </clipPath>
+                            <clipPath id="circleClip">
+                              <circle cx="570" cy="372" r="50" />
+                            </clipPath>
+                          </defs>
+
+                          {/* Main path image */}
+                          <g clipPath="url(#pathClip)">
+                            <image
+                              href={workshop.image}
+                              width="620"
+                              height="422"
+                              preserveAspectRatio="xMidYMid slice"
+                            />
+                          </g>
+
+                          {/* Circle image */}
+                          <g clipPath="url(#circleClip)">
+                            <image
+                              href={workshop.mentor.image}
+                              x="520"
+                              y="322"
+                              width="100"
+                              height="100"
+                              preserveAspectRatio="xMidYMid slice"
+                            />
+                          </g>
+                        </svg>
                       </div>
 
 
@@ -227,13 +282,6 @@ const Home = () => {
                             {skill.toLowerCase()}
                           </span>
                         ))}
-                      </div>
-                      <div className="absolute bottom-0 right-0 bg-white pt-4 pl-4 pb-0 pr-0 scale-105">
-                        <img
-                          src={workshop.mentor.image}
-                          alt={workshop.mentor.name}
-                          className="w-16 h-16 md:w-20 md:h-20 rounded-full"
-                        />
                       </div>
                     </div>
                     <div className="pt-4 flex flex-col items-start gap-3 md:gap-2">
