@@ -205,7 +205,7 @@ const Home = () => {
                 {workshops.map((workshop, index) => (
                   <div key={index} className="rounded-4xl border border-gray-400 overflow-hidden shadow-sm p-5">
                     <div className="relative rounded-3xl">
-                      <div className="w-full h-96 overflow-hidden rounded-3xl relative">
+                      <div className="w-full aspect-[620/405] md:aspect-[1240/810] overflow-hidden rounded-3xl relative">
                         <svg
                           width="620"
                           height="405"
