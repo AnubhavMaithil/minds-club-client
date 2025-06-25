@@ -25,7 +25,8 @@ const WorkshopSection = () => {
                 name: "Rajeev Mehta",
                 image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/TheRajeevMehta.png?updatedAt=1747771099391"
             },
-            bookmark: false
+            bookmark: false,
+            category: "Branding"
         },
         {
             title: "Virtual Edition - UI/UX Bootcamp",
@@ -43,7 +44,8 @@ const WorkshopSection = () => {
                 name: "Rajeev Mehta",
                 image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/TheRajeevMehta.png?updatedAt=1747771099391"
             },
-            bookmark: false
+            bookmark: false,
+            category: "Design"
         },
         {
             title: "Goa Edition - Branding & Beyond",
@@ -61,7 +63,8 @@ const WorkshopSection = () => {
                 name: "Rajeev Mehta",
                 image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/TheRajeevMehta.png?updatedAt=1747771099391"
             },
-            bookmark: false
+            bookmark: false,
+            category: "AI"
         },
         {
             title: "Virtual Edition - UI/UX Bootcamp",
@@ -79,23 +82,29 @@ const WorkshopSection = () => {
                 name: "Rajeev Mehta",
                 image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/TheRajeevMehta.png?updatedAt=1747771099391"
             },
-            bookmark: false
+            bookmark: false,
+            category: "Logo Design"
         },
     ];
 
-    const [selectedTheme, setSelectedTheme] = useState("");
-    const [selectedCategory, setSelectedCategory] = useState("");
+    const [selectedTheme, setSelectedTheme] = useState("all");
+    const [selectedCategory, setSelectedCategory] = useState("all");
     const [searchQuery, setSearchQuery] = useState("");
     const scrollRef = useRef(null);
 
     const filteredWorkshops = workshops.filter((workshop) => {
         const matchesMode =
             selectedTheme === "all" || workshop.mode === selectedTheme;
+
+        const matchesCategory =
+            selectedCategory === "all" ||
+            workshop.category.toLowerCase().replace(/\s+/g, "") === selectedCategory.toLowerCase();
+
         const matchesSearch =
             workshop.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
             workshop.location.toLowerCase().includes(searchQuery.toLowerCase());
 
-        return matchesMode && matchesSearch;
+        return matchesMode && matchesCategory && matchesSearch;
     });
 
     const scrollLeft = () => {
@@ -116,11 +125,25 @@ const WorkshopSection = () => {
         }
     };
 
+    const [openSelect, setOpenSelect] = useState(null); // can be "theme" or "category"
+
     const ModeSelector = [
         { value: "all", label: "All Modes" },
         { value: "Online", label: "Online Workshops" },
         { value: "On-field", label: "Offline Workshops" },
     ]
+
+    const categoryOptions = [
+        { value: "all", label: "All Categories" },
+        { value: "Branding", label: "Branding" },
+        { value: "Design", label: "Design" },
+        { value: "MotionDesign", label: "Motion Design" },
+        { value: "Filmmaking", label: "Filmmaking" },
+        { value: "AI", label: "AI" },
+        { value: "Packaging", label: "Packaging" },
+        { value: "LogoDesign", label: "Logo Design" },
+        { value: "VideoEditing", label: "Video Editing" },
+    ];
 
     return (
         <section className="min-h-screen w-full overflow-x-hidden rounded-md py-14">
@@ -143,15 +166,20 @@ const WorkshopSection = () => {
                                         value={selectedTheme}
                                         onChange={setSelectedTheme}
                                         options={ModeSelector}
-                                        placeholder={"Choose Mode"}
+                                        placeholder="Choose Mode"
+                                        isOpen={openSelect === "theme"}
+                                        setOpen={(state) => setOpenSelect(state ? "theme" : null)}
                                     />
                                 </div>
+
                                 <div className="w-full sm:w-[220px]">
                                     <CustomSelect
-                                        value={selectedTheme}
-                                        onChange={setSelectedTheme}
-                                        options={ModeSelector}
-                                        placeholder={"Choose Mode"}
+                                        value={selectedCategory}
+                                        onChange={setSelectedCategory}
+                                        options={categoryOptions}
+                                        placeholder="Choose Category"
+                                        isOpen={openSelect === "category"}
+                                        setOpen={(state) => setOpenSelect(state ? "category" : null)}
                                     />
                                 </div>
                             </div>
