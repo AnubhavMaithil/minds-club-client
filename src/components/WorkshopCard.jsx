@@ -20,7 +20,7 @@ const WorkshopCard = ({ workshop }) => {
                 />
                 <div className="absolute top-4 right-5 flex flex-wrap gap-1">
                     {workshop?.skills?.map((skill, index) => (
-                        <span key={index} className="bg-[#FFFE81] text-black text-xs font-medium px-3 py-1 rounded-full">
+                        <span key={index} className="bg-[#FFFE81] text-black text-xs font-medium px-3 py-1 rounded-full hover:bg-white hover:shadow-md transition-all duration-300">
                             {skill}
                         </span>
                     ))}
@@ -30,7 +30,7 @@ const WorkshopCard = ({ workshop }) => {
                 <div className="w-full flex items-center justify-between">
                     <div className="flex items-center gap-2 border border-black rounded-full w-fit">
                         <span className="ml-2 text-sm text-black">{workshop?.status}</span>
-                        <span className={`text-xs scale-110 px-3 py-0.5 rounded-full font-medium ${workshop?.mode === "Online"
+                        <span className={`text-xs scale-110 group-hover:translate-x-1 transition-all duration-300 px-3 py-0.5 rounded-full font-medium ${workshop?.mode === "Online"
                             ? "bg-gradient-to-r from-[#D4FC79] to-[#96E6A1] text-black"
                             : "bg-gradient-to-r from-[#FF8C21] to-[#FAC74D] text-white"
                             }`}>
@@ -47,7 +47,7 @@ const WorkshopCard = ({ workshop }) => {
                 </div>
                 <h2 className="text-xl font-bold leading-snug">{workshop?.title}</h2>
                 <p className="text-lg font-bold">{workshop?.subheading}</p>
-                <span className="inline-block bg-[#FFFE81] text-xs font-medium px-3 py-1 rounded-full w-fit shadow-sm">{workshop?.duration}</span>
+                <span className="inline-block bg-[#FFFE81] text-xs font-medium px-3 py-1 rounded-full w-fit shadow-sm group-hover:shadow-md transition-all duration-300">{workshop?.duration}</span>
                 <p className="text-base font-medium">Mentor - {workshop?.mentor?.name}</p>
                 <div className="flex flex-col md:flex-row md:gap-5 md:items-center mt-3">
                     <div className="whitespace-nowrap flex items-center gap-2 text-xs font-medium text-black mb-1">

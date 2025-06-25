@@ -2,7 +2,7 @@ import MaxWidthWrapper from "../layout/MaxWidthWrapper"
 import { IoSearchOutline } from "react-icons/io5";
 import WorkshopCard from "../WorkshopCard";
 import { RxChevronRight, RxChevronLeft } from "react-icons/rx";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CustomSelect from "../CustomSelect";
 import CustomInput from "../CustomInput";
 
@@ -145,6 +145,21 @@ const WorkshopSection = () => {
         { value: "VideoEditing", label: "Video Editing" },
     ];
 
+    const filterRef = useRef();
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (filterRef.current && !filterRef.current.contains(event.target)) {
+                setOpenSelect(null);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
     return (
         <section className="min-h-screen w-full overflow-x-hidden rounded-md py-14">
             <MaxWidthWrapper>
@@ -158,7 +173,10 @@ const WorkshopSection = () => {
                     </div>
 
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 w-full">
-                        <div className="bg-[#ECEAEA] w-full rounded-md px-2 py-2 flex flex-col md:flex-row items-stretch md:items-center md:justify-between gap-2">
+                        <div
+                            ref={filterRef}
+                            className="bg-[#ECEAEA] w-full rounded-md px-2 py-2 flex flex-col md:flex-row items-stretch md:items-center md:justify-between gap-2"
+                        >
                             {/* Filters */}
                             <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
                                 <div className="w-full sm:w-[220px]">
