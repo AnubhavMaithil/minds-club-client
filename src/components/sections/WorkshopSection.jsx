@@ -230,7 +230,7 @@ const WorkshopSection = () => {
                         </div>
                     </div>
 
-                    <div ref={scrollRef} className="flex items-center md:gap-5 scrollbar-hide overflow-x-hidden md:overflow-x-scroll rounded-3xl py-4">
+                    <div ref={scrollRef} className="hideScrollbar flex items-center md:gap-5 scrollbar-hide overflow-x-hidden md:overflow-x-scroll rounded-3xl py-4">
                         {filteredWorkshops.length > 0 ? (
                             filteredWorkshops.map((workshop, index) => (
                                 <WorkshopCard key={index} workshop={workshop} />

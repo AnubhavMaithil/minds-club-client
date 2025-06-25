@@ -111,7 +111,7 @@ const ShopSection = () => {
                         </div>
                     </div>
                     <div className="relative">
-                        <div ref={scrollRef} className="flex flex-row gap-5 overflow-x-auto scroll-smooth py-4 scrollbar-hide">
+                        <div ref={scrollRef} className="hideScrollbar flex flex-row gap-5 overflow-x-auto scroll-smooth py-4 scrollbar-hide">
                             {products.map((product, index) => (
                                 <ShopItems key={index} product={product} />
                             ))}
