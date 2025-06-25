@@ -182,7 +182,7 @@ const Footer = () => {
               <ul className="flex flex-wrap items-center justify-center gap-5 md:gap-20 text-center md:text-left">
                 <li>
                   <Link to="/workshops" className="text-white group w-fit">
-                    <p className="w-fit relative after:block after:h-[2px] after:bg-current after:scale-x-0 after:origin-left after:transition-transform after:duration-300 group-hover:after:scale-x-100 text-base">
+                    <p className="w-fit relative after:block after:h-[2px] after:bg-current after:scale-x-0 after:origin-left after:transition-transform after:duration-300 group-hover:after:scale-x-100 text-sm md:text-base">
                       Privacy Policy
                     </p>
                     <hr className="w-full md:hidden" />
@@ -190,7 +190,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link to="/shop" className="text-white group w-fit">
-                    <p className="w-fit relative after:block after:h-[2px] after:bg-current after:scale-x-0 after:origin-left after:transition-transform after:duration-300 group-hover:after:scale-x-100 text-base">
+                    <p className="w-fit relative after:block after:h-[2px] after:bg-current after:scale-x-0 after:origin-left after:transition-transform after:duration-300 group-hover:after:scale-x-100 text-sm md:text-base">
                       Terms & Conditions
                     </p>
                     <hr className="w-full md:hidden" />
@@ -198,7 +198,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link to="/the-one" className="text-white group w-fit">
-                    <p className="w-fit relative after:block after:h-[2px] after:bg-current after:scale-x-0 after:origin-left after:transition-transform after:duration-300 group-hover:after:scale-x-100 text-base">
+                    <p className="w-fit relative after:block after:h-[2px] after:bg-current after:scale-x-0 after:origin-left after:transition-transform after:duration-300 group-hover:after:scale-x-100 text-sm md:text-base">
                       Shipping Policy
                     </p>
                     <hr className="w-full md:hidden" />
