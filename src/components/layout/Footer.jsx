@@ -13,7 +13,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative w-full bg-[#F9F7F7] min-h-screen group/image">
+    <footer className="relative w-full bg-[#F9F7F7] max-h-fit group/image">
       <MaxWidthWrapper>
         <div className="relative z-10 rounded-lg py-14 flex flex-col items-center justify-between gap-10 md:gap-20">
           <div className="w-full flex flex-col justify-between items-center md:items-center gap-6 mt-0 md:mt-5">
