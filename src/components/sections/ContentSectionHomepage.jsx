@@ -14,7 +14,7 @@ const ContentSectionHomepage = () => {
 
     return (
         <section className="relative">
-            <MaxWidthWrapper className="pt-28">
+            <MaxWidthWrapper className="py-28">
                 <div className="flex flex-col gap-20">
                     <div ref={description} className="flex justify-center">
                         <div className="relative flex gap-1">

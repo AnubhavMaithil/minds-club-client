@@ -1,13 +1,10 @@
-import { MdOutlineDateRange } from "react-icons/md";
 import MaxWidthWrapper from "../layout/MaxWidthWrapper"
-import { IoLocationOutline, IoSearchOutline } from "react-icons/io5";
-import { LuUsers } from "react-icons/lu";
-import Button from "../Button";
-import { GoArrowRight } from "react-icons/go";
+import { IoSearchOutline } from "react-icons/io5";
 import WorkshopCard from "../WorkshopCard";
 import { RxChevronRight, RxChevronLeft } from "react-icons/rx";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { useRef, useState } from "react";
+import CustomSelect from "../CustomSelect";
+import CustomInput from "../CustomInput";
 
 
 const WorkshopSection = () => {
@@ -86,8 +83,8 @@ const WorkshopSection = () => {
         },
     ];
 
-    const [selectedTheme, setSelectedTheme] = useState("all");
-    const [selectedCategory, setSelectedCategory] = useState("all");
+    const [selectedTheme, setSelectedTheme] = useState("");
+    const [selectedCategory, setSelectedCategory] = useState("");
     const [searchQuery, setSearchQuery] = useState("");
     const scrollRef = useRef(null);
 
@@ -119,6 +116,12 @@ const WorkshopSection = () => {
         }
     };
 
+    const ModeSelector = [
+        { value: "all", label: "All Modes" },
+        { value: "Online", label: "Online Workshops" },
+        { value: "On-field", label: "Offline Workshops" },
+    ]
+
     return (
         <section className="min-h-screen w-full overflow-x-hidden rounded-md py-14">
             <MaxWidthWrapper>
@@ -135,44 +138,31 @@ const WorkshopSection = () => {
                         <div className="bg-[#ECEAEA] w-full rounded-md px-2 py-2 flex flex-col md:flex-row items-stretch md:items-center md:justify-between gap-2">
                             {/* Filters */}
                             <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
-                                <div className="w-full sm:w-[180px]">
-                                    <select
-                                        name="mode"
+                                <div className="w-full sm:w-[220px]">
+                                    <CustomSelect
                                         value={selectedTheme}
-                                        onChange={(e) => setSelectedTheme(e.target.value)}
-                                        className="w-full p-2 rounded-md border border-gray-300 text-sm font-medium bg-white focus:outline-none focus:ring-2 focus:ring-gray-400"
-                                    >
-                                        <option value="all" disabled hidden>
-                                            Filter by Mode
-                                        </option>
-                                        <option value="all">All Modes</option>
-                                        <option value="Online">Online Workshops</option>
-                                        <option value="On-field">Offline Workshops</option>
-                                    </select>
+                                        onChange={setSelectedTheme}
+                                        options={ModeSelector}
+                                        placeholder={"Choose Mode"}
+                                    />
                                 </div>
-                                <div className="w-full sm:w-[180px]">
-                                    <select
-                                        name="category"
-                                        value={selectedCategory}
-                                        onChange={(e) => setSelectedCategory(e.target.value)}
-                                        className="w-full p-2 rounded-md border border-gray-300 text-sm font-medium bg-white focus:outline-none focus:ring-2 focus:ring-gray-400"
-                                    >
-                                        <option value="all">All Categories</option>
-                                        <option value="Online">Online Workshops</option>
-                                        <option value="On-field">Offline Workshops</option>
-                                    </select>
+                                <div className="w-full sm:w-[220px]">
+                                    <CustomSelect
+                                        value={selectedTheme}
+                                        onChange={setSelectedTheme}
+                                        options={ModeSelector}
+                                        placeholder={"Choose Mode"}
+                                    />
                                 </div>
                             </div>
 
                             {/* Search */}
-                            <div className="flex items-center gap-2 bg-white p-2 rounded-md w-full md:w-1/2">
-                                <IoSearchOutline />
-                                <input
-                                    type="text"
-                                    className="outline-none text-sm w-full"
-                                    placeholder="Search by title or location"
+                            <div className="w-full md:w-1/2">
+                                <CustomInput
                                     value={searchQuery}
-                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    onChange={setSearchQuery}
+                                    placeholder="Search by title or location"
+                                    icon={<IoSearchOutline />}
                                 />
                             </div>
                         </div>
@@ -194,7 +184,7 @@ const WorkshopSection = () => {
                         </div>
                     </div>
 
-                    <div ref={scrollRef} className="flex items-center md:gap-5 scrollbar-hide overflow-x-scroll rounded-3xl py-4">
+                    <div ref={scrollRef} className="flex items-center md:gap-5 scrollbar-hide overflow-x-hidden md:overflow-x-scroll rounded-3xl py-4">
                         {filteredWorkshops.length > 0 ? (
                             filteredWorkshops.map((workshop, index) => (
                                 <WorkshopCard key={index} workshop={workshop} />
