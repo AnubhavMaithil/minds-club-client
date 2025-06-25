@@ -13,7 +13,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative w-full bg-[#F9F7F7] min-h-screen">
+    <footer className="relative w-full bg-[#F9F7F7] min-h-screen group/image">
       <MaxWidthWrapper>
         <div className="relative z-10 rounded-lg py-14 flex flex-col items-center justify-between gap-10 md:gap-20">
           <div className="w-full flex flex-col justify-between items-center md:items-center gap-6 mt-0 md:mt-5">
@@ -228,11 +228,11 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 group overflow-hidden">
           <img
             src="https://ik.imagekit.io/anubhavmaithil/MindsClub/Footer-IMAGE.jpg"
             alt="Minds-Club footer image"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover/image:scale-105"
           />
           <div className="absolute inset-0 bg-black/30" />
         </div>
