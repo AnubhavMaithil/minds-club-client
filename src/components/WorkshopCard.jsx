@@ -63,8 +63,8 @@ const WorkshopCard = ({ workshop }) => {
                         <span>{workshop.limited ? "Limited Seats" : "Open Seats"}</span>
                     </div>
                 </div>
-                <div className="w-full flex justify-between items-center">
-                    <Button title={workshop?.mode === "Online" ? "Book your spot" : "Book your spot"} className={"bg-black text-white font-medium"} />
+                <div className="w-full flex justify-between items-center mt-2">
+                    <Button title={workshop?.mode === "Online" ? "Join The Live Sessions" : "Join The Journey"} className={"bg-black text-white font-medium"} />
                     <div className="transition-transform duration-300 group-hover:translate-x-1">
                         <GoArrowRight size={28} />
                     </div>
