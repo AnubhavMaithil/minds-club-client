@@ -53,7 +53,7 @@ const InsiderItems = ({ product }) => {
             <div className="relative z-10 p-5 text-white h-full flex items-end justify-center">
                 <Button
                     title="Included with membership"
-                    className="w-fit bg-black text-white flex items-center justify-center gap-2 font-medium group-hover:gap-4 transition-all duration-300"
+                    className="w-fit bg-black text-white flex items-center justify-center gap-2 font-medium hover:bg-white hover:text-black hover:gap-4 transition-all duration-300"
                     icon={<FiArrowUpRight size={20} className="mt-0.5" />}
                 />
             </div>
