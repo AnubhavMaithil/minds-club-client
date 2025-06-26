@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import MaxWidthWrapper from "../layout/MaxWidthWrapper";
-import ShopItems from "../ShopItems";
-import { RxChevronLeft, RxChevronRight } from "react-icons/rx";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 import InsiderItems from "../InsiderItems";
 
 const MindsClubInsider = () => {
@@ -56,36 +57,17 @@ const MindsClubInsider = () => {
         },
     ]
 
-    const scrollRef = useRef(null);
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [isMobile, setIsMobile] = useState(false);
 
-    const scrollByCard = () => {
-        if (!scrollRef.current) return 0;
-        const firstCard = scrollRef.current.querySelector("div");
-        return firstCard ? firstCard.clientWidth + 20 : 320;
-    };
-
-    const scrollToIndex = (index) => {
-        if (scrollRef.current) {
-            scrollRef.current.scrollTo({
-                left: scrollByCard() * index,
-                behavior: "smooth",
-            });
-        }
-    };
-
-    // Auto scroll every 3 seconds
     useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentIndex((prevIndex) => {
-                const nextIndex = (prevIndex + 1) % products.length;
-                scrollToIndex(nextIndex);
-                return nextIndex;
-            });
-        }, 5000);
+        const checkIsMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
 
-        return () => clearInterval(interval);
-    }, [products.length]);
+        checkIsMobile();
+        window.addEventListener("resize", checkIsMobile);
+        return () => window.removeEventListener("resize", checkIsMobile);
+    }, []);
 
 
     return (
@@ -102,14 +84,41 @@ const MindsClubInsider = () => {
                         </div>
                     </div>
                     <div className="relative">
-                        <div
-                            ref={scrollRef}
-                            className="hideScrollbar flex flex-row md:gap-5 overflow-x-auto scroll-smooth py-4 scrollbar-hide"
-                        >
-                            {products.map((product, index) => (
-                                <InsiderItems key={index} product={product} />
-                            ))}
-                        </div>
+                        {isMobile ? (
+                            <Swiper
+                                modules={[Autoplay]}
+                                autoplay={{
+                                    delay: 2500,
+                                    disableOnInteraction: false,
+                                }}
+                                spaceBetween={16}
+                                slidesPerView={1.1}
+                                loop={true}
+                            >
+                                {products.map((product, index) => (
+                                    <SwiperSlide key={index}>
+                                        <InsiderItems product={product} />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        ) : (
+                            <Swiper
+                                modules={[Autoplay]}
+                                autoplay={{
+                                    delay: 2500,
+                                    disableOnInteraction: false,
+                                }}
+                                spaceBetween={20}
+                                slidesPerView={3.3}
+                                loop={true}
+                            >
+                                {products.map((product, index) => (
+                                    <SwiperSlide key={index}>
+                                        <InsiderItems product={product} />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        )}
                     </div>
                 </div>
             </MaxWidthWrapper>

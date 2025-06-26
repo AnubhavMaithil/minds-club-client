@@ -44,7 +44,7 @@ const InsiderItems = ({ product }) => {
 
             {/* Color Badges */}
             <div className="absolute inset-0 flex items-start justify-end p-5 z-10">
-                <span className="text-white border border-white text-xs font-medium px-3 py-1 rounded-full hover:bg-white hover:shadow-md transition-all duration-300">
+                <span className="text-white border border-white text-base font-bold px-3 py-1 rounded-full hover:bg-white hover:shadow-md transition-all duration-300">
                     {product.type}
                 </span>
             </div>
