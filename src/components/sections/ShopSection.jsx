@@ -1,7 +1,9 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import MaxWidthWrapper from "../layout/MaxWidthWrapper";
 import ShopItems from "../ShopItems";
 import { RxChevronLeft, RxChevronRight } from "react-icons/rx";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 
 const ShopSection = () => {
     const products = [
@@ -82,6 +84,20 @@ const ShopSection = () => {
         }
     };
 
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkIsMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        checkIsMobile();
+        window.addEventListener("resize", checkIsMobile);
+        return () => window.removeEventListener("resize", checkIsMobile);
+    }, []);
+
+    const swiperRef = useRef(null);
+
 
     return (
         <section className="w-full overflow-hidden rounded-md py-14">
@@ -110,12 +126,67 @@ const ShopSection = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="relative">
+                    {/* <div className="relative">
                         <div ref={scrollRef} className="hideScrollbar flex flex-row gap-5 overflow-x-auto scroll-smooth py-4 scrollbar-hide">
                             {products.map((product, index) => (
                                 <ShopItems key={index} product={product} />
                             ))}
                         </div>
+                    </div> */}
+                    <div className="relative">
+                        {isMobile ? (
+                            <Swiper
+                                modules={[Autoplay]}
+                                autoplay={{
+                                    delay: 3000,
+                                    disableOnInteraction: true,
+                                }}
+                                spaceBetween={16}
+                                slidesPerView={1.1}
+                                loop={true}
+                                onSwiper={(swiper) => {
+                                    swiperRef.current = swiper;
+                                }}
+                                onMouseEnter={() => {
+                                    if (swiperRef.current) swiperRef.current.autoplay.stop();
+                                }}
+                                onMouseLeave={() => {
+                                    if (swiperRef.current) swiperRef.current.autoplay.start();
+                                }}
+                            >
+                                {products.map((product, index) => (
+                                    <SwiperSlide key={index}>
+                                        <ShopItems key={index} product={product} />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        ) : (
+                            <Swiper
+                                modules={[Autoplay]}
+                                autoplay={{
+                                    delay: 3000,
+                                    disableOnInteraction: true,
+                                }}
+                                spaceBetween={20}
+                                slidesPerView={3.3}
+                                loop={true}
+                                onSwiper={(swiper) => {
+                                    swiperRef.current = swiper;
+                                }}
+                                onMouseEnter={() => {
+                                    if (swiperRef.current) swiperRef.current.autoplay.stop();
+                                }}
+                                onMouseLeave={() => {
+                                    if (swiperRef.current) swiperRef.current.autoplay.start();
+                                }}
+                            >
+                                {products.map((product, index) => (
+                                    <SwiperSlide key={index}>
+                                        <ShopItems key={index} product={product} />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        )}
                     </div>
                 </div>
             </MaxWidthWrapper>

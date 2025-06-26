@@ -5,6 +5,8 @@ import { RxChevronRight, RxChevronLeft } from "react-icons/rx";
 import { useEffect, useRef, useState } from "react";
 import CustomSelect from "../CustomSelect";
 import CustomInput from "../CustomInput";
+import { Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 
 const WorkshopSection = () => {
@@ -160,6 +162,20 @@ const WorkshopSection = () => {
         };
     }, []);
 
+    const swiperRef = useRef(null);
+
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkIsMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        checkIsMobile();
+        window.addEventListener("resize", checkIsMobile);
+        return () => window.removeEventListener("resize", checkIsMobile);
+    }, []);
+
     return (
         <section className="min-h-screen w-full overflow-x-hidden rounded-md py-14">
             <MaxWidthWrapper>
@@ -230,15 +246,52 @@ const WorkshopSection = () => {
                         </div>
                     </div>
 
-                    <div ref={scrollRef} className="hideScrollbar flex items-center md:gap-5 scrollbar-hide overflow-x-hidden md:overflow-x-scroll rounded-3xl py-4">
-                        {filteredWorkshops.length > 0 ? (
-                            filteredWorkshops.map((workshop, index) => (
-                                <WorkshopCard key={index} workshop={workshop} />
-                            ))
+                    <div className="relative">
+                        {isMobile ? (
+                            <Swiper
+                                modules={[Autoplay]}
+                                autoplay={{
+                                    delay: 2500,
+                                    disableOnInteraction: true,
+                                }}
+                                spaceBetween={16}
+                                slidesPerView={1.1}
+                                loop={true}
+                                onSwiper={(swiper) => {
+                                    swiperRef.current = swiper;
+                                }}
+                                onMouseEnter={() => {
+                                    if (swiperRef.current) swiperRef.current.autoplay.stop();
+                                }}
+                                onMouseLeave={() => {
+                                    if (swiperRef.current) swiperRef.current.autoplay.start();
+                                }}
+                            >
+                                {filteredWorkshops.length > 0 ? (
+                                    filteredWorkshops.map((workshop, index) => (
+                                        <SwiperSlide key={index}>
+                                            <WorkshopCard workshop={workshop} />
+                                        </SwiperSlide>
+                                    ))
+                                ) : (
+                                    <SwiperSlide>
+                                        <div className="text-gray-500">No workshops found.</div>
+                                    </SwiperSlide>
+                                )}
+                            </Swiper>
                         ) : (
-                            <div className="text-gray-500">No workshops found.</div>
+                                <div ref={scrollRef} className="hideScrollbar flex items-center md:gap-5 scrollbar-hide overflow-x-hidden md:overflow-x-scroll rounded-3xl py-4">
+                                    {filteredWorkshops.length > 0 ? (
+                                        filteredWorkshops.map((workshop, index) => (
+                                            <WorkshopCard key={index} workshop={workshop} />
+                                        ))
+                                    ) : (
+                                        <div className="text-gray-500">No workshops found.</div>
+                                    )}
+                                </div>
                         )}
                     </div>
+
                 </div>
             </MaxWidthWrapper>
         </section>

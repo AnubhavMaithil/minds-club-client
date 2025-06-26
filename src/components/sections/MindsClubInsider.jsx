@@ -11,7 +11,7 @@ const MindsClubInsider = () => {
             id: 1,
             title: "Electomania",
             description: "Sun Hat for Men and Women",
-            image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/hat.png",
+            image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/Image-1.jpg",
             video: "https://ik.imagekit.io/anubhavmaithil/MindsClub/main.mp4",
             type: "Podcast"
         },
@@ -19,7 +19,7 @@ const MindsClubInsider = () => {
             id: 2,
             title: "Electomania",
             description: "Sun Hat for Men and Women",
-            image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/hat.png",
+            image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/Image-2.jpg",
             video: "https://ik.imagekit.io/anubhavmaithil/MindsClub/main.mp4",
             type: "Something"
         },
@@ -27,7 +27,7 @@ const MindsClubInsider = () => {
             id: 3,
             title: "Electomania",
             description: "Sun Hat for Men and Women",
-            image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/hat.png",
+            image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/Image-3.jpg",
             video: "https://ik.imagekit.io/anubhavmaithil/MindsClub/main.mp4",
             type: "Podcast"
         },
@@ -35,7 +35,7 @@ const MindsClubInsider = () => {
             id: 4,
             title: "Electomania",
             description: "Sun Hat for Men and Women",
-            image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/hat.png",
+            image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/Image-1.jpg",
             video: "https://ik.imagekit.io/anubhavmaithil/MindsClub/main.mp4",
             type: "Something"
         },
@@ -43,7 +43,7 @@ const MindsClubInsider = () => {
             id: 5,
             title: "Electomania",
             description: "Sun Hat for Men and Women",
-            image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/hat.png",
+            image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/Image-2.jpg",
             video: "https://ik.imagekit.io/anubhavmaithil/MindsClub/main.mp4",
             type: "Podcast"
         },
@@ -51,7 +51,7 @@ const MindsClubInsider = () => {
             id: 6,
             title: "Electomania",
             description: "Sun Hat for Men and Women",
-            image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/hat.png",
+            image: "https://ik.imagekit.io/anubhavmaithil/MindsClub/Image-3.jpg",
             video: "https://ik.imagekit.io/anubhavmaithil/MindsClub/main.mp4",
             type: "Hello"
         },
@@ -68,6 +68,8 @@ const MindsClubInsider = () => {
         window.addEventListener("resize", checkIsMobile);
         return () => window.removeEventListener("resize", checkIsMobile);
     }, []);
+
+    const swiperRef = useRef(null);
 
 
     return (
@@ -88,12 +90,21 @@ const MindsClubInsider = () => {
                             <Swiper
                                 modules={[Autoplay]}
                                 autoplay={{
-                                    delay: 2500,
-                                    disableOnInteraction: false,
+                                    delay: 2000,
+                                    disableOnInteraction: true,
                                 }}
                                 spaceBetween={16}
                                 slidesPerView={1.1}
                                 loop={true}
+                                onSwiper={(swiper) => {
+                                    swiperRef.current = swiper;
+                                }}
+                                onMouseEnter={() => {
+                                    if (swiperRef.current) swiperRef.current.autoplay.stop();
+                                }}
+                                onMouseLeave={() => {
+                                    if (swiperRef.current) swiperRef.current.autoplay.start();
+                                }}
                             >
                                 {products.map((product, index) => (
                                     <SwiperSlide key={index}>
@@ -105,12 +116,21 @@ const MindsClubInsider = () => {
                             <Swiper
                                 modules={[Autoplay]}
                                 autoplay={{
-                                    delay: 2500,
-                                    disableOnInteraction: false,
+                                    delay: 2000,
+                                    disableOnInteraction: true,
                                 }}
                                 spaceBetween={20}
                                 slidesPerView={3.3}
                                 loop={true}
+                                    onSwiper={(swiper) => {
+                                        swiperRef.current = swiper;
+                                    }}
+                                    onMouseEnter={() => {
+                                        if (swiperRef.current) swiperRef.current.autoplay.stop();
+                                    }}
+                                    onMouseLeave={() => {
+                                        if (swiperRef.current) swiperRef.current.autoplay.start();
+                                    }}
                             >
                                 {products.map((product, index) => (
                                     <SwiperSlide key={index}>

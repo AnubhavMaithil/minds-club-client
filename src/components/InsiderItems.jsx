@@ -27,8 +27,8 @@ const InsiderItems = ({ product }) => {
         >
             {/* Image Layer */}
             <div
-                className="absolute inset-0 bg-cover bg-top transition-transform duration-500 group-hover:scale-105"
-                style={{ backgroundImage: `url(${product.image})`, backgroundSize: "150%" }}
+                className="absolute inset-0 bg-cover bg-top transition-transform duration-500 group-hover:scale-105 object-cover"
+                style={{ backgroundImage: `url(${product.image})` }}
             />
 
             {/* Video Layer */}
@@ -44,7 +44,7 @@ const InsiderItems = ({ product }) => {
 
             {/* Color Badges */}
             <div className="absolute inset-0 flex items-start justify-end p-5 z-10">
-                <span className="text-white border border-white text-base font-bold px-3 py-1 rounded-full hover:bg-white hover:shadow-md transition-all duration-300">
+                <span className="text-white border border-white text-base md:text-sm font-bold px-3 py-1 rounded-full hover:bg-white hover:shadow-md transition-all duration-300">
                     {product.type}
                 </span>
             </div>
