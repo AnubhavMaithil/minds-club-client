@@ -79,7 +79,7 @@ const MindsClubInsider = () => {
                     <div className="flex items-end justify-between">
                         <div className="flex flex-col items-start justify-start gap-3 h-full">
                             <h1 className="uppercase">Mindsclub | Insider</h1>
-                            <h1 className="text-2xl md:text-4xl leading-relaxed font-bold">
+                            <h1 className="text-xl md:text-4xl leading-relaxed font-bold">
                                 Interview, Podcast, & Market Trends <br />
                                 from top Creative Minds.
                             </h1>
