@@ -2,7 +2,7 @@ import { lazy } from "react";
 import { Routes as RouterRoutes, Route, Navigate } from "react-router-dom";
 import MainLayout from "@layouts/MainLayout";
 import ProtectedRoute from "@routes/ProtectedRoute";
-import { useAuthStore } from "@store/authStore";
+import { Routers } from "@/Constants/Routes";
 
 // Lazy-loaded pages for better performance
 const Home = lazy(() => import("@pages/Home"));
@@ -11,31 +11,30 @@ const Dashboard = lazy(() => import("@pages/Dashboard"));
 const NotFound = lazy(() => import("@pages/NotFound"));
 
 export const Routes = () => {
-  const { isAuthenticated } = useAuthStore();
 
   return (
     <RouterRoutes>
       {/* Public routes */}
-      <Route path="/" element={<MainLayout />}>
+      <Route path={Routers.HOME} element={<MainLayout />}>
         <Route index element={<Home />} />
-        <Route
-          path="login"
+        {/* <Route
+          path={Routers.LOGIN}
           element={
-            isAuthenticated ? <Navigate to="/dashboard" replace /> : <Login />
+            isAuthenticated ? <Navigate to={Routers.DASHBOARD} replace /> : <Login />
           }
-        />
+        /> */}
       </Route>
 
       {/* Protected routes */}
       <Route
-        path="/"
+        path={Routers.HOME}
         element={
           <ProtectedRoute>
             <MainLayout />
           </ProtectedRoute>
         }
       >
-        <Route path="dashboard" element={<Dashboard />} />
+        <Route path={Routers.DASHBOARD} element={<Dashboard />} />
       </Route>
 
       {/* 404 page */}
